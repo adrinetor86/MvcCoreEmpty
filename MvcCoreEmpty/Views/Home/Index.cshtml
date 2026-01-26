@@ -1,3 +1,27 @@
-﻿<h1 style="color:fuchsia">Estas en casita</h1>
+﻿
+@section styles{
+    <style>
+        h2{
+            background-color:yellow;
+        }
+    </style>
+}
+@section script {
+    <script>
+        $(document).ready(function(){
+            $("#botonvista").click(function(){
+            
+                $("#mensajevista").text("Boton pulsado en View")
+            })
+        })
+    </script>
+}
+<h1 style="color:fuchsia">Estas en casita</h1>
+
+<h2 style="color:blue" id="mensajevista">
+    Mensaje en la vista
+</h2>
+
+<button id="botonvista" class="btn btn-primary">Boton Vista</button>
 
 
