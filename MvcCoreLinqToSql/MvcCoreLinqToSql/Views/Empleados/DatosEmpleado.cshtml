@@ -1,0 +1,77 @@
+@model ResumenEmpleado
+
+@{
+    
+  //  List<string> oficios = (List<string>) ViewData["OFICIOS"];  
+    
+    //ES LO MISMO
+    List<string> oficios =  ViewData["OFICIOS"] as List<string>; 
+}
+<h1>Lambda Linq Empleados</h1>
+
+    
+<form method="post">
+
+    <label for="">Oficio: </label>
+    <select name="oficio" class="form-control">
+        @foreach (var oficio in oficios)
+        {
+            <option>@oficio</option>
+        }
+    </select>
+
+    <button class="btn btn-primary">Buscar</button>
+</form>
+
+
+@if (Model != null)
+{
+    <ul class="list-group">
+        
+        <li class="list-group-item list-group-item-primary">
+            Personas: @Model.Personas
+        </li>
+        
+        <li class="list-group-item list-group-item-warning">
+            Máximo Salario: @Model.MaximoSalario
+        </li>
+        
+        <li class="list-group-item  list-group-item-success">
+            Media Salarial: @Model.MediaSalarial
+        </li>
+    </ul>
+    @if (Model.Empleados != null)
+    {
+        <table class="table table-bordered table-secondary">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+                <th>Departamento</th>
+            </tr>
+            </thead>
+            <tbody>
+        
+            @foreach (var empleado in Model.Empleados)
+            {
+                <tr>
+                    <td>@empleado.IdEmpleado</td>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.Oficio</td>
+                    <td>@empleado.Salario</td>
+                    <td>@empleado.IdDepartamento</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2>
+            No existen empleados
+        </h2>
+    }
+   
+}

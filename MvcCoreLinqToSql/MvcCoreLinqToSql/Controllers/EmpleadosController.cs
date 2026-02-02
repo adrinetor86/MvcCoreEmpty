@@ -44,7 +44,27 @@ public class EmpleadosController : Controller
                                 ""+oficio +" y salario "+salario;
             return  View();
         }
-            return View(empleados);           
+            return View(empleados);
+    }
+
     
+    public IActionResult DatosEmpleado()
+    {
+        List<string> oficios= repo.GetOficios();
+        ViewData["OFICIOS"] = oficios;
+        return View();
+    }
+    [HttpPost]
+    public IActionResult DatosEmpleado(string  oficio)
+    {
+        ResumenEmpleado resumen = repo.GetEmpleadosOficio(oficio);
+        List<string> oficios= repo.GetOficios();
+        ViewData["OFICIOS"] = oficios;
+        if (resumen == null)
+        {
+            ViewData["MENSAJE"]="No hay empleados con el oficio: "+oficio;
+            return View();
+        }
+        return View(resumen);
     }
 }
