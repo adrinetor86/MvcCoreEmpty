@@ -1,19 +1,17 @@
-@page
-@model MvcCoreCrudDepartamentosAdo.Views.Departamentos.NewDepartamento
+<h1>Nuevo Dept</h1>
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
+<form method="post">
     
-</div>
-</body>
-</html>
+    <label for="">Id</label>
+    <input type="text" class="form-control" name="idDept"
+    >
+    
+    <label for="">Nombre</label>
+    <input type="text" class="form-control" name="nombre" 
+    > 
+    
+    <label for="">Localidad</label>
+    <input type="text" class="form-control" name="localidad">
+    
+    <button class="btn btn-primary">Crear</button>
+</form>

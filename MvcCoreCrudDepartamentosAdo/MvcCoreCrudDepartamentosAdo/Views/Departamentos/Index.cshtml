@@ -1,18 +1,37 @@
-@model TModel
+@model List<Departamento>
 
-@{
-    Layout = null;
-}
+<h1>Departamentos SQL</h1>
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Localidad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    
+    @foreach (Departamento dept in Model)
+    {
+        <tr>
+            <td>@dept.IdDept</td>
+            <td>@dept.Nombre</td>
+            <td>@dept.Localidad</td>
+            <td>
+                <a asp-controller="Departamentos" 
+                   asp-action="Edit"
+                   asp-route-idDept="@dept.IdDept">Edit</a>
+                
+                <a asp-controller="Departamentos" 
+                   asp-action="NewDepartamento"
+                   >Crear</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

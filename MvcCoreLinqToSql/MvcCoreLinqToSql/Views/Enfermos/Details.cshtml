@@ -1,0 +1,37 @@
+@model Enfermo
+
+
+@if(Model!=null){
+    <h1>Details of @Model.Apellido</h1>
+    <table class="table table-info table-striped">
+        <thead>
+        <tr>
+            <th>Insripcion</th>
+            <th>Apellido</th>
+            <th>Direccion</th>
+            <th>Nacimiento</th>
+            <th>Genero</th>
+            <th>NSS</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Inscripcion</td>
+                <td>@Model.Apellido</td>
+                <td>@Model.Direccion</td>
+                <td>@Model.Fecha_Nac</td>
+                <td>@Model.Genero</td>
+                <td>@Model.Nss</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+}else{
+    <h1>@ViewData["MENSAJE"]</h1>
+}
+
+<a asp-controller="Enfermos"
+   asp-action="Index"
+   class="btn btn-primary">Volver
+    </a>

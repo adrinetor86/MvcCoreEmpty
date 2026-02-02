@@ -1,0 +1,37 @@
+
+@model List<Empleado>
+
+<a asp-controller="Empleados"
+   asp-action="BuscadorEmpleado">Buscador Empleado</a>
+
+<h1>Empleados</h1>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Apellido</th>
+        <th>Oficio</th>
+        <th>Salario</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (Empleado emp in Model)
+    {
+        <tr>
+            <td>@emp.Apellido</td>
+            <td>@emp.Oficio</td>
+            <td>@emp.Salario</td>
+            <td>
+                <a class="btn btn-primary"
+                   asp-area=""
+                   asp-controller="Empleados"
+                   asp-action="Details"
+                   asp-route-id="@emp.IdEmpleado">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

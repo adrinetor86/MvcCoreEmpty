@@ -1,0 +1,31 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using MvcCoreAdoNetOk.Models;
+using MvcCoreAdoNetOk.Repositories;
+
+namespace MvcCoreAdoNet.Controllers
+{
+    public class HospitalesController : Controller
+    {
+
+        public RepositoryHospital repo;
+
+        public HospitalesController()
+        {
+            this.repo = new RepositoryHospital();
+        }
+        public async Task<IActionResult> Index()
+        {
+
+            List<Hospital> hospitales =
+                await this.repo.GetHospitalesAsync();
+            return View(hospitales);
+            
+        }
+        
+        public async Task<IActionResult> Details(int id)
+        {
+            Hospital hospital = await this.repo.FindHospitalAsync(id);
+            return View(hospital);
+        }
+    }
+}

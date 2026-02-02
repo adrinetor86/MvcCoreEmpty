@@ -1,0 +1,48 @@
+@model List<Enfermo>
+
+<h1>Listado de Enfermos</h1>
+
+
+@if(Model!=null){
+
+<table class="table table-info table-striped mx-auto w-75 text-center border-1 table-hover">
+    <thead>
+    <tr>
+        <th>Insripcion</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var enfermo in Model)
+    {
+        <tr class="">
+            <td>@enfermo.Inscripcion</td>
+            <td>@enfermo.Apellido</td>
+
+            <td>
+                
+                <a asp-controller="Enfermos"
+                   asp-action="Details"
+                   asp-route-inscripcion="@enfermo.Inscripcion"
+                   class="btn btn-primary">
+                    Details
+                </a>
+                
+                <a asp-controller="Enfermos"
+                   asp-action="Delete"
+                   asp-route-inscripcion="@enfermo.Inscripcion"
+                   class="btn btn-danger">
+                    Delete
+                </a>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+}else{
+    <h1>@ViewData["MENSAJE"]</h1>
+}

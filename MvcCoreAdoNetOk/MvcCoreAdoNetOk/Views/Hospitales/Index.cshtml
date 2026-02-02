@@ -1,0 +1,37 @@
+﻿@model List<Hospital>
+
+
+<h1>Hospitales Ado Net</h1>
+
+<a asp-controller="Hospitales"
+asp-action="Details"
+asp-route-id="45">
+    detalles
+</a>
+
+@if (Model != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>Nombre</tr>
+            <tr>Direccion</tr>
+            <tr>Telefono</tr>
+            <tr>Acciones</tr>
+        </thead>
+        <tbody>
+
+            @foreach (Hospital hospital in Model)
+            {
+                <tr>
+                    <td>@hospital.Nombre</td>
+                    <td>@hospital.Direccion</td>
+                    <td>@hospital.Telefono</td>
+                    <td>
+                        @Html.ActionLink("Details","Details","Hospitales",
+                            new{id=hospital.IdHospital})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
